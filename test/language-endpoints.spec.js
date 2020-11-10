@@ -110,7 +110,7 @@ describe('Language Endpoints', function () {
   /**
    * @description Get head from language
    **/
-  describe.only(`GET /api/language/head`, () => {
+  describe(`GET /api/language/head`, () => {
     const usersLanguage = testLanguages.find(l => l.user_id === testUser.id)
     const headWord = testWords.find(w => w.language_id === usersLanguage.id)
 
@@ -155,7 +155,7 @@ describe('Language Endpoints', function () {
       )
     })
 
-    it.skip(`responds with 400 required error when 'guess' is missing`, () => {
+    it(`responds with 400 required error when 'guess' is missing`, () => {
       const postBody = {
         randomField: 'test random field',
       }
@@ -165,7 +165,7 @@ describe('Language Endpoints', function () {
         .set('Authorization', helpers.makeAuthHeader(testUser))
         .send(postBody)
         .expect(400, {
-          error: `Missing 'guess' in request body`,
+          error: `Missing guess in request body`,
         })
     })
 
@@ -174,7 +174,7 @@ describe('Language Endpoints', function () {
         guess: 'incorrect',
       }
 
-      it.skip(`responds with incorrect and moves head`, () => {
+      it(`responds with incorrect and moves head`, () => {
         return supertest(app)
           .post(`/api/language/guess`)
           .set('Authorization', helpers.makeAuthHeader(testUser))
@@ -190,7 +190,7 @@ describe('Language Endpoints', function () {
           })
       })
 
-      it.skip(`moves the word 1 space and updates incorrect count`, async () => {
+      it(`moves the word 1 space and updates incorrect count`, async () => {
         await supertest(app)
           .post(`/api/language/guess`)
           .set('Authorization', helpers.makeAuthHeader(testUser))
@@ -216,7 +216,7 @@ describe('Language Endpoints', function () {
         word => word.language_id === testLanguage.id
       )
 
-      it.skip(`responds with correct and moves head`, () => {
+      it(`responds with correct and moves head`, () => {
         const correctPostBody = {
           guess: testLanguagesWords[0].translation,
         }
@@ -235,7 +235,7 @@ describe('Language Endpoints', function () {
           })
       })
 
-      it.skip(`moves the word 2 spaces, increases score and correct count`, async () => {
+      it(`moves the word 2 spaces, increases score and correct count`, async () => {
         let correctPostBody = {
           guess: testLanguagesWords[0].translation,
         }
