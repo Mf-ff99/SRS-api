@@ -1,8 +1,11 @@
 const express = require('express')
 const LanguageService = require('./language-service')
 const { requireAuth } = require('../middleware/jwt-auth')
+const { LinkedList } = require('../Utils/LinkedList')
 
 const languageRouter = express.Router()
+
+const jsonBodyParser = express.json()
 
 languageRouter
   .use(requireAuth)
@@ -66,9 +69,10 @@ languageRouter
   })
 
 languageRouter
-  .post('/guess', async (req, res, next) => {
+  .post('/guess', jsonBodyParser, async (req, res, next) => {
     try {
       const { guess } = req.body
+      // console.log(req.body.guess)
 
       if (!guess) {
         return res.status(400).json({ error: `Missing guess in request body` })
@@ -104,7 +108,7 @@ languageRouter
       list.insertAt(list, removedHead, removedHead.memory_value)
 
       let tempNode = list.head
-      let head = tempnode.value.id
+      let head = tempNode.value.id
 
       while (tempNode !== null) {
         await LanguageService.updateWord(
@@ -141,6 +145,6 @@ languageRouter
     } catch (e) {
       next(e)
     }
-  })
+})
 
 module.exports = languageRouter
