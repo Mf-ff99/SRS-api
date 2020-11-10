@@ -28,6 +28,27 @@ const LanguageService = {
       )
       .where({ language_id })
   },
+
+  getLanguageHead(db, headId) {
+    return db
+      .from('word')
+      .select('*')
+      .where('id', headId)
+  },
+
+  updateLanguage(db, user_id, newLanguageFields) {
+    return db
+      .from('language')
+      .where( { user_id })
+      .update(newLanguageFields)
+  },
+
+  updateWord(db, word_id, updatedField) {
+    return db
+      .from('word')
+      .where('id', word_id)
+      .update(updatedField)
+  }
 }
 
 module.exports = LanguageService
