@@ -82,6 +82,7 @@ languageRouter
       const db = req.app.get('db')
       let headWord = await LanguageService.getLanguageHead(db, req.language.head)
       let words = await LanguageService.getLanguageWords(db, req.language.id)
+      // console.log(headWord[0])
       list.insertFirst(headWord[0])
 
       while (headWord[0].next !== null) {
