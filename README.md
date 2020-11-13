@@ -3,8 +3,8 @@
 ## Summary
 Bootstrapped with create-react-app and completed using JavaScript, vanilla CSS, JSX and ReactJS.
 
- Front-end Live Deployment: https://srs-client.vercel.app/
- Back-end Live Deployment: https://srs-server-api.herokuapp.com/
+* Front-end Live Deployment: https://srs-client.vercel.app/
+* Back-end Live Deployment: https://srs-server-api.herokuapp.com/
  
   LearnSpanish! is a language learning application designed for teaching beginner Spanish learners a handful of Spanish words and phrases. LearnSpanish! features a Spaced-Repetition algorithm on the back-end to help users stay caught up on their studies without forgetting any new words they have learned. The application features 10 spanish words and is built to allow for the application to be expanded upon. 
 
